@@ -860,8 +860,9 @@ class Dropzone extends Emitter
 
     files = e.dataTransfer.files
     # Patch to catch silently passing fail to upload folders for Windows Firefox and IE
-      if files.length == 0
+    if files.length == 0
       @emit 'error', 'None', 'Cannot upload directories, applications, or packages'
+      return
     @emit "addedfiles", files
 
     # Even if it's a folder, files.length will contain the folders.
